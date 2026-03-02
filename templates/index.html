@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telepanel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="brand">
+                <svg class="brand-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13"/>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"/>
+                </svg>
+                <h1>Telepanel</h1>
+            </div>
+            <div class="controls">
+                <span class="account-count" id="accountCount">0</span>
+                <button class="btn" id="btnRefresh">Refresh</button>
+                <button class="btn btn-accent" id="btnCheckAll">Check All</button>
+            </div>
+        </header>
+
+        <!-- Proxy status banner -->
+        <div class="proxy-banner" id="proxyBanner" style="display:none;">
+            <span class="proxy-banner-icon" id="proxyBannerIcon"></span>
+            <span class="proxy-banner-text" id="proxyBannerText"></span>
+            <button class="proxy-banner-close" id="proxyBannerClose">&times;</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-bar">
+            <button class="tab active" data-status="" id="tabAll">All <span class="tab-count" id="countAll">0</span></button>
+            <button class="tab" data-status="active">Active <span class="tab-count" id="countActive">0</span></button>
+            <button class="tab" data-status="spamblock">Spam Block <span class="tab-count" id="countSpamblock">0</span></button>
+            <button class="tab" data-status="frozen">Frozen <span class="tab-count" id="countFrozen">0</span></button>
+            <button class="tab" data-status="dead">Dead <span class="tab-count" id="countDead">0</span></button>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-bar">
+            <input type="text" class="filter-input" id="filterSearch" placeholder="Search phone, username, name...">
+            <select class="filter-select" id="filterFolder">
+                <option value="">All folders</option>
+            </select>
+        </div>
+
+        <main class="main">
+
+            <!-- Broken accounts warning -->
+            <div class="broken-section" id="brokenSection" style="display:none;">
+                <div class="broken-header" id="brokenToggle">
+                    <span class="broken-icon">!</span>
+                    <span class="broken-title">Broken accounts</span>
+                    <span class="broken-count" id="brokenCount">0</span>
+                    <span class="broken-arrow" id="brokenArrow">&#9654;</span>
+                </div>
+                <div class="broken-list" id="brokenList"></div>
+            </div>
+
+            <!-- Account bars -->
+            <div class="account-list" id="accountList"></div>
+
+            <div class="loading" id="loading">Loading accounts...</div>
+            <div class="empty-state" id="emptyState" style="display:none;">
+                No accounts found. Place .json + .session files in accounts/actual/
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
