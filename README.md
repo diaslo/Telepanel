@@ -8,3 +8,5 @@ Telethon panel - manager accounts telegram. With telethon framework
 Возвращаем результаты.
 
 Панелька написана с CLAUDE OPUS 4.6!!!
+
+ДЛЯ ПОЯВЛЕНИЯ FOLDER accounts ЗАПУСТИТЕ app.py
